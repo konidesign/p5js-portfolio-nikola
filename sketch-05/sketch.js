@@ -4,7 +4,7 @@ let rows = 20;
 let w, h;
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(500, 500);
 
   webcam = createCapture(VIDEO);
   webcam.size(50, 50);
