@@ -1,0 +1,46 @@
+body { margin: 0; background: #0F1A6B; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* chaque case = thumbnail + iframe superposée (cachée par défaut) */
+.tile {
+  position: relative;
+  display: block;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tile iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  border: 0;
+  transform-origin: top left;
+  opacity: 0;
+  pointer-events: none; /* hors hover : clic = lien <a> */
+  transition: opacity 0.15s;
+}
+
+/* hover : on affiche l'iframe par-dessus la thumbnail
+   et on lui rend les pointer-events pour que les sketchs interactifs
+   reçoivent les clics / mouvements souris / clavier */
+.tile:hover iframe {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (max-width: 1000px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 700px)  { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 420px)  { .grid { grid-template-columns: 1fr; } }

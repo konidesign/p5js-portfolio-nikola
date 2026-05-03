@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>p5 Portfolio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="grid">
+  <a href="sketch-01" class="tile"><img src="sketch-01/thumb.png"><iframe data-src="sketch-01/index.html" allow="camera; microphone"></iframe></a>
+  <a href="sketch-02" class="tile"><img src="sketch-02/thumb.png"><iframe data-src="sketch-02/index.html" allow="camera; microphone"></iframe></a>
+  <a href="sketch-03" class="tile"><img src="sketch-03/thumb.png"><iframe data-src="sketch-03/index.html" allow="camera; microphone"></iframe></a>
+  <a href="sketch-04" class="tile"><img src="sketch-04/thumb.png"><iframe data-src="sketch-04/index.html" allow="camera; microphone"></iframe></a>
+  <a href="sketch-05" class="tile"><img src="sketch-05/thumb.png"><iframe data-src="sketch-05/index.html" allow="camera; microphone"></iframe></a>
+  <a href="sketch-06" class="tile"><img src="sketch-06/thumb.png"><iframe data-src="sketch-06/index.html" allow="camera; microphone"></iframe></a>
+  <a href="sketch-07" class="tile"><img src="sketch-07/thumb.png"><iframe data-src="sketch-07/index.html" allow="camera; microphone"></iframe></a>
+  <a href="sketch-08" class="tile"><img src="sketch-08/thumb.png"><iframe data-src="sketch-08/index.html" allow="camera; microphone"></iframe></a>
+  <a href="sketch-09" class="tile"><img src="sketch-09/thumb.png"><iframe data-src="sketch-09/index.html" allow="camera; microphone"></iframe></a>
+  <a href="sketch-10" class="tile"><img src="sketch-10/thumb.png"><iframe data-src="sketch-10/index.html" allow="camera; microphone"></iframe></a>
+  <a href="sketch-11" class="tile"><img src="sketch-11/thumb.png"><iframe data-src="sketch-11/index.html" allow="camera; microphone"></iframe></a>
+  <a href="sketch-12" class="tile"><img src="sketch-12/thumb.png"><iframe data-src="sketch-12/index.html" allow="camera; microphone"></iframe></a>
+</div>
+
+<script>
+  // les iframes sont 500x500 (taille du canvas p5) → on les scale pour qu'elles remplissent leur case
+  function fitIframes() {
+    document.querySelectorAll('.tile').forEach(t => {
+      const f = t.querySelector('iframe');
+      f.style.transform = 'scale(' + (t.clientWidth / 500) + ')';
+    });
+  }
+  window.addEventListener('load', fitIframes);
+  window.addEventListener('resize', fitIframes);
+
+  // lazy-load : on ne charge l'iframe que la 1re fois qu'on survole la case
+  document.querySelectorAll('.tile').forEach(t => {
+    t.addEventListener('mouseenter', () => {
+      const f = t.querySelector('iframe');
+      if (!f.src) f.src = f.dataset.src;
+    });
+  });
+</script>
+
+</body>
+</html>
