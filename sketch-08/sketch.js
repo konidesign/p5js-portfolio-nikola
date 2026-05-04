@@ -14,7 +14,7 @@ function draw() {
 
   if (currentKey === '') {
     fill(255, 69, 0);
-    text("CLICK & PRESS KEY", width / 2, height / 2);
+    text("CLICK &\nPRESS KEY", width / 2, height / 2);
   } else {
     // grosse lettre en couleur pleine
     fill(255, 69, 0);

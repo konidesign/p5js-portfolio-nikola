@@ -1,15 +1,28 @@
 let mic;
+let started = false;
 
 function setup() {
   createCanvas(500, 500, WEBGL);
   noStroke();
 
   mic = new p5.AudioIn();
-  mic.start();
+
+  textAlign(CENTER, CENTER);
+  textSize(24);
 }
 
 function draw() {
   background(15, 26, 107);
+
+  if (!started) {
+    // message d'invitation au clic (en 2D au-dessus du WEBGL)
+    push();
+    fill(255, 69, 0);
+    translate(0, 0, 0);
+    text("CLICK POUR ACTIVER", 0, 0);
+    pop();
+    return;
+  }
 
   let volume = mic.getLevel();
 
@@ -50,5 +63,13 @@ function draw() {
 
       pop();
     }
+  }
+}
+
+function mousePressed() {
+  if (!started) {
+    userStartAudio();
+    mic.start();
+    started = true;
   }
 }
